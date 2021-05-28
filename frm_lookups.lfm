@@ -1,0 +1,176 @@
+object frmLookUps: TfrmLookUps
+  Left = 904
+  Height = 351
+  Top = 165
+  Width = 520
+  Caption = 'Lookup management'
+  ClientHeight = 351
+  ClientWidth = 520
+  LCLVersion = '1.6.0.4'
+  object DBNavigator1: TDBNavigator
+    Left = 0
+    Height = 25
+    Top = 0
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = dsLookups
+    Options = []
+    TabOrder = 0
+  end
+  object pgcntrlLookUps: TPageControl
+    Left = 8
+    Height = 319
+    Top = 32
+    Width = 514
+    ActivePage = tbshtOvervw
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 1
+    OnChange = pgcntrlLookUpsChange
+    object tbshtOvervw: TTabSheet
+      Caption = 'Overview'
+      ClientHeight = 294
+      ClientWidth = 512
+      object dbgrdLookups: TDBGrid
+        Left = 0
+        Height = 294
+        Top = 0
+        Width = 512
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'id'
+            Width = 35
+            FieldName = '_id'
+          end        
+          item
+            Title.Caption = 'Lookup'
+            Width = 350
+            FieldName = 'lkup_Nm'
+          end>
+        DataSource = dsLookups
+        TabOrder = 0
+      end
+    end
+    object TabSheet1: TTabSheet
+      Caption = 'Details'
+      ClientHeight = 294
+      ClientWidth = 512
+      Font.Name = 'tbshtDetails'
+      ParentFont = False
+      object dbedtLookupNm: TDBEdit
+        Left = 160
+        Height = 25
+        Top = 24
+        Width = 241
+        DataField = 'lkup_Nm'
+        DataSource = dsLookups
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object dbedtCode: TDBEdit
+        Left = 161
+        Height = 25
+        Top = 56
+        Width = 240
+        DataField = 'lkup_Code'
+        DataSource = dsLookups
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 1
+      end
+      object dbedtLkupCode: TDBEdit
+        Left = 159
+        Height = 25
+        Top = 88
+        Width = 241
+        DataField = 'lkup_LookUpCd'
+        DataSource = dsLookups
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 2
+      end
+      object lblLookup: TLabel
+        Left = 24
+        Height = 15
+        Top = 32
+        Width = 51
+        Caption = 'Lookup:'
+        ParentColor = False
+      end
+      object lblLookUpCode: TLabel
+        Left = 24
+        Height = 15
+        Top = 64
+        Width = 86
+        Caption = 'Lookup code:'
+        ParentColor = False
+      end
+      object lblNumCode: TLabel
+        Left = 24
+        Height = 15
+        Top = 96
+        Width = 119
+        Caption = 'Lookup num code:'
+        ParentColor = False
+      end
+    end
+    object tbshtNotes: TTabSheet
+      Caption = 'Notes'
+    end
+    object tbshtItems: TTabSheet
+      Caption = 'Items'
+      ClientHeight = 294
+      ClientWidth = 512
+      inline framLkUpItems1: TframLkUpItems
+        Height = 294
+        Width = 512
+        Align = alClient
+        ClientHeight = 294
+        ClientWidth = 512
+        inherited DBNavigator1: TDBNavigator
+          ClientHeight = 21
+          ClientWidth = 237
+          Hints.Strings = (          )
+        end
+        inherited pgcntrlLkUpItems: TPageControl
+          Height = 262
+          Width = 511
+          ActivePage = framLkUpItems1.tbshtOverview
+          TabIndex = 0
+          inherited tbshtOverview: TTabSheet
+            ClientHeight = 258
+            ClientWidth = 507
+            inherited dbgrdLkUpItems: TDBGrid
+              Height = 237
+              Width = 509
+            end
+          end
+          inherited tbshtDetails: TTabSheet
+            ClientHeight = 258
+            ClientWidth = 507
+          end
+          inherited tbshtNotes: TTabSheet
+            ClientHeight = 258
+            ClientWidth = 507
+          end
+        end
+      end
+    end
+  end
+  object dsLookups: TDataSource
+    DataSet = DatModMain.SQLQryLookUps
+    left = 196
+    top = 254
+  end
+end

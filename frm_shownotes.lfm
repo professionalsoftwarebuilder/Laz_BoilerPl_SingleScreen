@@ -1,0 +1,26 @@
+object frmShowNotes: TfrmShowNotes
+  Left = 297
+  Height = 165
+  Top = 397
+  Width = 415
+  BorderIcons = [biSystemMenu]
+  Caption = 'Notes to current record'
+  ClientHeight = 165
+  ClientWidth = 415
+  FormStyle = fsStayOnTop
+  LCLVersion = '1.8.4.0'
+  object dbTxtNotes: TDBMemo
+    Left = 0
+    Height = 165
+    Hint = 'Notes belonging to record selected in grid'
+    Top = 0
+    Width = 415
+    Align = alClient
+    ParentShowHint = False
+    TabOrder = 0
+  end
+  object VDFormPosSize1: TVDFormPosSize
+    left = 83
+    top = 71
+  end
+end

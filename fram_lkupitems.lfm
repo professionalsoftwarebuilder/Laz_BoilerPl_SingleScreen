@@ -1,0 +1,163 @@
+object framLkUpItems: TframLkUpItems
+  Left = 0
+  Height = 297
+  Top = 0
+  Width = 533
+  ClientHeight = 297
+  ClientWidth = 533
+  TabOrder = 0
+  DesignLeft = 511
+  DesignTop = 258
+  object DBNavigator1: TDBNavigator
+    Left = 0
+    Height = 25
+    Top = 0
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = dsLkUpItems
+    Options = []
+    TabOrder = 0
+  end
+  object pgcntrlLkUpItems: TPageControl
+    Left = 1
+    Height = 265
+    Top = 32
+    Width = 532
+    ActivePage = tbshtOverview
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 1
+    object tbshtOverview: TTabSheet
+      Caption = 'Overview'
+      ClientHeight = 237
+      ClientWidth = 524
+      object dbgrdLkUpItems: TDBGrid
+        Left = 0
+        Height = 237
+        Top = 0
+        Width = 524
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'id'
+            Width = 30
+            FieldName = '_id'
+          end        
+          item
+            Title.Caption = 'VlgNr'
+            Width = 40
+            FieldName = 'lupI_VlgNr'
+          end        
+          item
+            Title.MultiLine = True
+            Title.Caption = 'Text'
+            Width = 350
+            FieldName = 'lupI_TextVal'
+          end>
+        DataSource = dsLkUpItems
+        TabOrder = 0
+      end
+    end
+    object tbshtDetails: TTabSheet
+      Caption = 'Details'
+      ClientHeight = 237
+      ClientWidth = 524
+      object DBEdit1: TDBEdit
+        Left = 134
+        Height = 23
+        Top = 16
+        Width = 372
+        DataField = 'lupI_TextVal'
+        DataSource = dsLkUpItems
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object dbEdtLkupCode: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 48
+        Width = 170
+        DataField = 'lupI_Code'
+        DataSource = dsLkUpItems
+        ReadOnly = True
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 1
+      end
+      object DBEdit3: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 80
+        Width = 170
+        DataField = 'lupI_IntVal'
+        DataSource = dsLkUpItems
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 2
+      end
+      object lblTextVal: TLabel
+        Left = 20
+        Height = 15
+        Top = 22
+        Width = 55
+        Caption = 'Text value:'
+        ParentColor = False
+      end
+      object lblLookUpCd: TLabel
+        Left = 20
+        Height = 15
+        Top = 56
+        Width = 72
+        Caption = 'Lookup code:'
+        ParentColor = False
+      end
+      object Label1: TLabel
+        Left = 20
+        Height = 15
+        Top = 88
+        Width = 71
+        Caption = 'Integer value:'
+        ParentColor = False
+      end
+      object btnChangcode: TButton
+        Left = 324
+        Height = 25
+        Top = 51
+        Width = 75
+        Caption = 'Change'
+        OnClick = btnChangcodeClick
+        TabOrder = 3
+      end
+    end
+    object tbshtNotes: TTabSheet
+      Caption = 'Notes'
+      ClientHeight = 237
+      ClientWidth = 524
+      object dbmmItmMemVal: TDBMemo
+        Left = 7
+        Height = 235
+        Top = 5
+        Width = 513
+        DataField = 'lupI_MemoVal'
+        DataSource = dsLkUpItems
+        TabOrder = 0
+      end
+    end
+  end
+  object dsLkUpItems: TDataSource
+    DataSet = DatModMain.SQLQryLookUpItems
+    left = 205
+    top = 173
+  end
+end

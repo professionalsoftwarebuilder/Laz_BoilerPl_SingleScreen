@@ -1,0 +1,143 @@
+object framStandaard: TframStandaard
+  Left = 0
+  Height = 356
+  Top = 0
+  Width = 615
+  ClientHeight = 356
+  ClientWidth = 615
+  OnEnter = FrameEnter
+  TabOrder = 0
+  DesignLeft = 565
+  DesignTop = 270
+  object DBNavigator1: TDBNavigator
+    Left = 0
+    Height = 25
+    Top = 25
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = dsNtnItems
+    Options = []
+    TabOrder = 0
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
+  end
+  object thePageControl: TPageControl
+    Left = 0
+    Height = 304
+    Top = 52
+    Width = 615
+    ActivePage = tbshtOverview
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 1
+    object tbshtOverview: TTabSheet
+      Caption = 'Overview'
+      ClientHeight = 273
+      ClientWidth = 605
+      object DBGrid1: TDBGrid
+        Left = 0
+        Height = 273
+        Top = 0
+        Width = 605
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'id'
+            Width = 35
+            FieldName = '_id'
+          end        
+          item
+            Title.Caption = 'Genre'
+            Width = 450
+            FieldName = 'lang_Nm'
+          end>
+        DataSource = dsNtnItems
+        TabOrder = 0
+      end
+    end
+    object tbshtDetails: TTabSheet
+      Caption = 'Details'
+    end
+    object tbshtNotes: TTabSheet
+      Caption = 'Notes'
+      ClientHeight = 273
+      ClientWidth = 605
+      object DBMemo1: TDBMemo
+        Left = 8
+        Height = 254
+        Top = 8
+        Width = 468
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        DataField = 'TT_tbla_Notes'
+        DataSource = dsNtnItems
+        TabOrder = 0
+      end
+    end
+  end
+  object btnAddGenre: TButton
+    Left = 248
+    Height = 25
+    Top = 25
+    Width = 64
+    Caption = 'Add item'
+    Font.Color = clNavy
+    Font.Style = [fsBold]
+    OnClick = btnAddGenreClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object theToolBar: TToolBar
+    Left = 0
+    Height = 24
+    Top = -1
+    Width = 264
+    Align = alNone
+    Caption = 'theToolBar'
+    Color = clNavy
+    ParentColor = False
+    TabOrder = 3
+    object Panel1: TPanel
+      Left = 1
+      Height = 22
+      Top = 2
+      Width = 54
+      BevelOuter = bvNone
+      Caption = 'Items:'
+      Color = clNavy
+      Font.Color = clWhite
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 0
+    end
+    object dbTxtPnlSelectedRec: TDBText
+      Left = 55
+      Height = 22
+      Top = 2
+      Width = 200
+      AutoSize = False
+      Color = clNavy
+      DataField = 'TT_tbla_Nm'
+      DataSource = dsNtnItems
+      Font.Color = clWhite
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+  end
+  object dsNtnItems: TDataSource
+    DataSet = DatModMain.SQLQryTT_tbla_tblb
+    left = 213
+    top = 194
+  end
+end

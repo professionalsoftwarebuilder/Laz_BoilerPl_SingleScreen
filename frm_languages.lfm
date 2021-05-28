@@ -1,0 +1,174 @@
+object frmLanguages: TfrmLanguages
+  Left = 673
+  Height = 439
+  Top = 249
+  Width = 747
+  Caption = 'Languages'
+  ClientHeight = 439
+  ClientWidth = 747
+  OnShow = FormShow
+  LCLVersion = '2.0.0.4'
+  object theDbNavigator: TDBNavigator
+    Left = 1
+    Height = 25
+    Top = 26
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = dsItems
+    Options = []
+    TabOrder = 0
+  end
+  object thePageControl: TPageControl
+    Left = 1
+    Height = 383
+    Top = 56
+    Width = 746
+    ActivePage = tbshtDetails
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 1
+    TabOrder = 1
+    OnChange = thePageControlChange
+    object tbshtOverz: TTabSheet
+      Caption = 'Overview'
+      ClientHeight = 355
+      ClientWidth = 738
+      object theDbgrd: TDBGrid
+        Left = 0
+        Height = 355
+        Top = 0
+        Width = 738
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = '_id'
+            Width = 30
+            FieldName = '_id'
+          end        
+          item
+            Title.Caption = 'Language'
+            Width = 350
+            FieldName = 'lang_Nm'
+          end>
+        DataSource = dsItems
+        TabOrder = 0
+      end
+    end
+    object tbshtDetails: TTabSheet
+      Caption = 'Details'
+      ClientHeight = 355
+      ClientWidth = 738
+      object Label1: TLabel
+        Left = 22
+        Height = 15
+        Top = 23
+        Width = 55
+        Caption = 'Language:'
+        ParentColor = False
+      end
+      object dbedtTitle: TDBEdit
+        Left = 104
+        Height = 23
+        Top = 16
+        Width = 370
+        DataField = 'lang_Nm'
+        DataSource = dsItems
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 0
+      end
+    end
+    object tbshtNotes: TTabSheet
+      Caption = 'Notes'
+      ClientHeight = 355
+      ClientWidth = 738
+      object dbmmDocNotes: TDBMemo
+        Left = 2
+        Height = 351
+        Top = 3
+        Width = 731
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        DataField = 'lang_Notes'
+        DataSource = dsItems
+        ScrollBars = ssAutoVertical
+        TabOrder = 0
+      end
+    end
+    object tbshtVersions: TTabSheet
+      Caption = 'Versions'
+    end
+  end
+  object theToolBar: TToolBar
+    Left = 0
+    Height = 24
+    Top = 0
+    Width = 264
+    Align = alNone
+    Caption = 'theToolBar'
+    Color = clNavy
+    ParentColor = False
+    TabOrder = 2
+    object Panel1: TPanel
+      Left = 1
+      Height = 22
+      Top = 2
+      Width = 54
+      BevelOuter = bvNone
+      Caption = 'Lang.:'
+      Color = clNavy
+      Font.Color = clWhite
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 0
+    end
+    object dbTxtPnlSelectedRec: TDBText
+      Left = 55
+      Height = 22
+      Top = 2
+      Width = 200
+      AutoSize = False
+      Color = clNavy
+      DataField = 'lang_Nm'
+      DataSource = dsItems
+      Font.Color = clWhite
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+  end
+  object btnSelectRecord: TButton
+    Left = 248
+    Height = 25
+    Top = 24
+    Width = 48
+    Caption = 'Select'
+    Font.Color = clNavy
+    Font.Style = [fsBold]
+    OnClick = btnSelectRecordClick
+    ParentFont = False
+    TabOrder = 3
+    Visible = False
+  end
+  object dsItems: TDataSource
+    DataSet = DatModMain.SQLQryLanguages
+    OnDataChange = dsItemsDataChange
+    left = 469
+    top = 295
+  end
+  object opnDlgDocFilePath: TOpenDialog
+    left = 255
+    top = 271
+  end
+end

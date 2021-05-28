@@ -1,0 +1,278 @@
+object frmTestForm: TfrmTestForm
+  Left = 2557
+  Height = 439
+  Top = 511
+  Width = 747
+  Caption = 'Items'
+  ClientHeight = 439
+  ClientWidth = 747
+  OnShow = FormShow
+  LCLVersion = '1.6.0.4'
+  object theDbNavigator: TDBNavigator
+    Left = 0
+    Height = 25
+    Top = 26
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = dsItems
+    Options = []
+    TabOrder = 0
+  end
+  object thePageControl: TPageControl
+    Left = 1
+    Height = 383
+    Top = 56
+    Width = 746
+    ActivePage = tbshtOverz
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 1
+    OnChange = thePageControlChange
+    object tbshtOverz: TTabSheet
+      Caption = 'Overview'
+      ClientHeight = 357
+      ClientWidth = 744
+      object dbgrdDocuments: TDBGrid
+        Left = 0
+        Height = 357
+        Top = 0
+        Width = 744
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = '_id'
+            Width = 30
+            FieldName = '_id'
+          end        
+          item
+            Title.Caption = 'Title'
+            Width = 350
+            FieldName = 'itm_Title'
+          end>
+        DataSource = dsItems
+        TabOrder = 0
+      end
+    end
+    object tbshtDetails: TTabSheet
+      Caption = 'Details'
+      ClientHeight = 357
+      ClientWidth = 744
+      object Label1: TLabel
+        Left = 22
+        Height = 16
+        Top = 23
+        Width = 36
+        Caption = 'Title:'
+        ParentColor = False
+      end
+      object Label2: TLabel
+        Left = 24
+        Height = 16
+        Top = 56
+        Width = 65
+        Caption = 'File path:'
+        ParentColor = False
+      end
+      object lblSubject: TLabel
+        Left = 24
+        Height = 16
+        Top = 88
+        Width = 58
+        Caption = 'Subject:'
+        ParentColor = False
+      end
+      object dbedtTitle: TDBEdit
+        Left = 104
+        Height = 26
+        Top = 16
+        Width = 376
+        DataField = 'itm_Title'
+        DataSource = dsItems
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object dbedtFilePath: TDBEdit
+        Left = 104
+        Height = 26
+        Top = 48
+        Width = 384
+        DataField = 'itm_DocFile'
+        DataSource = dsItems
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 1
+      end
+      object btnSelFilePath: TButton
+        Left = 496
+        Height = 25
+        Top = 48
+        Width = 32
+        Anchors = [akTop, akRight]
+        Caption = '...'
+        OnClick = btnSelFilePathClick
+        TabOrder = 2
+      end
+      object dbLkupCmbxSujects: TDBLookupComboBox
+        Left = 104
+        Height = 26
+        Top = 80
+        Width = 256
+        DataField = 'itm_Fk_Subj'
+        DataSource = dsItems
+        KeyField = '_id'
+        ListField = 'subj_Title'
+        ListFieldIndex = 0
+        ListSource = DatModMain.dsList_Subjects
+        LookupCache = False
+        TabOrder = 3
+      end
+    end
+    object tbshtNotes: TTabSheet
+      Caption = 'Notes'
+      ClientHeight = 357
+      ClientWidth = 744
+      object dbmmDocNotes: TDBMemo
+        Left = 8
+        Height = 353
+        Top = 3
+        Width = 733
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        DataField = 'itm_Notes'
+        DataSource = dsItems
+        ScrollBars = ssAutoVertical
+        TabOrder = 0
+      end
+    end
+    object tbshtKeyWords: TTabSheet
+      Caption = 'Key words'
+      ClientHeight = 357
+      ClientWidth = 744
+      object dbmmDocKeyWords: TDBMemo
+        Left = 8
+        Height = 345
+        Top = 7
+        Width = 729
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        DataField = 'itm_KeyWords'
+        DataSource = dsItems
+        ScrollBars = ssAutoVertical
+        TabOrder = 0
+      end
+    end
+    object tbshtVersions: TTabSheet
+      Caption = 'Versions'
+    end
+  end
+  object btnOpenDoc: TButton
+    Left = 248
+    Height = 25
+    Top = 26
+    Width = 75
+    BorderSpacing.Left = 22
+    BorderSpacing.Top = 3
+    Caption = 'Open doc'
+    OnClick = btnOpenDocClick
+    TabOrder = 2
+  end
+  object dbCmbBxSubjects: TDBLookupComboBox
+    Left = 456
+    Height = 26
+    Top = 0
+    Width = 184
+    Enabled = False
+    KeyField = '_id'
+    ListField = 'subj_Title'
+    ListFieldIndex = 0
+    ListSource = DatModMain.dsList_Subjects
+    LookupCache = False
+    OnSelect = dbCmbBxSubjectsSelect
+    Style = csDropDownList
+    TabOrder = 3
+  end
+  object theToolBar: TToolBar
+    Left = 0
+    Height = 24
+    Top = 0
+    Width = 264
+    Align = alNone
+    Caption = 'theToolBar'
+    Color = clNavy
+    ParentColor = False
+    TabOrder = 4
+    object Panel1: TPanel
+      Left = 1
+      Height = 22
+      Top = 2
+      Width = 54
+      BevelOuter = bvNone
+      Caption = 'Items:'
+      Color = clNavy
+      Font.Color = clWhite
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 0
+    end
+    object dbTxtPnlSelectedRec: TDBText
+      Left = 55
+      Height = 22
+      Top = 2
+      Width = 200
+      AutoSize = False
+      Color = clNavy
+      DataField = 'itm_Title'
+      DataSource = dsItems
+      Font.Color = clWhite
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+  end
+  object rdgrpAllOrBySubj: TRadioGroup
+    Left = 336
+    Height = 51
+    Top = 0
+    Width = 111
+    AutoFill = True
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 47
+    ClientWidth = 107
+    ItemIndex = 0
+    Items.Strings = (
+      'alle items'
+      'per groep'
+    )
+    OnClick = rdgrpAllOrBySubjClick
+    TabOrder = 5
+  end
+  object dsItems: TDataSource
+    DataSet = DatModMain.SQLQryItems
+    OnDataChange = dsItemsDataChange
+    left = 469
+    top = 295
+  end
+  object opnDlgDocFilePath: TOpenDialog
+    left = 255
+    top = 271
+  end
+end

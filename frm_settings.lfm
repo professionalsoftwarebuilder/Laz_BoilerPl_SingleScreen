@@ -1,0 +1,220 @@
+object frmSettings: TfrmSettings
+  Left = 687
+  Height = 439
+  Top = 392
+  Width = 922
+  Caption = 'Application settings'
+  ClientHeight = 439
+  ClientWidth = 922
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  LCLVersion = '2.0.8.0'
+  object theDbNavigator: TDBNavigator
+    Left = 1
+    Height = 25
+    Top = 24
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = dsItems
+    Options = []
+    TabOrder = 0
+  end
+  object thePageControl: TPageControl
+    Left = 1
+    Height = 383
+    Top = 56
+    Width = 921
+    ActivePage = tbshtIniSettings
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 3
+    TabOrder = 1
+    OnChange = thePageControlChange
+    object tbshtOverz: TTabSheet
+      Caption = 'Overview settings in db'
+      ClientHeight = 352
+      ClientWidth = 911
+      object theDbgrd: TDBGrid
+        Left = 0
+        Height = 352
+        Top = 0
+        Width = 911
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = '_id'
+            Width = 30
+            FieldName = '_id'
+          end        
+          item
+            Title.Caption = 'Settings'
+            Width = 350
+            FieldName = 'stng_Nm'
+          end        
+          item
+            Title.Caption = 'Setting text value'
+            Width = 350
+            FieldName = 'stng_TextVal'
+          end        
+          item
+            Title.Caption = 'Setting numeric val.'
+            Width = 110
+            FieldName = 'stng_NumVal'
+          end>
+        DataSource = dsItems
+        TabOrder = 0
+      end
+    end
+    object tbshtDetails: TTabSheet
+      Caption = 'Details'
+      ClientHeight = 352
+      ClientWidth = 911
+      object Label1: TLabel
+        Left = 22
+        Height = 15
+        Top = 23
+        Width = 33
+        Caption = 'Title:'
+        ParentColor = False
+      end
+      object dbedtTitle: TDBEdit
+        Left = 104
+        Height = 33
+        Top = 16
+        Width = 537
+        DataField = 'stng_Nm'
+        DataSource = dsItems
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 0
+      end
+    end
+    object tbshtNotes: TTabSheet
+      Caption = 'Setting memo val'
+      ClientHeight = 352
+      ClientWidth = 911
+      object dbmmDocNotes: TDBMemo
+        Left = 2
+        Height = 347
+        Top = 3
+        Width = 904
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        DataField = 'stng_MemoVal'
+        DataSource = dsItems
+        ScrollBars = ssAutoVertical
+        TabOrder = 0
+      end
+    end
+    object tbshtIniSettings: TTabSheet
+      Caption = 'Settings in inifile'
+      ClientHeight = 352
+      ClientWidth = 911
+      object lblFileRepo: TLabel
+        Left = 16
+        Height = 15
+        Top = 16
+        Width = 121
+        Caption = 'File repo directory:'
+        ParentColor = False
+      end
+      object edtRepoDir: TEdit
+        Left = 16
+        Height = 33
+        Top = 38
+        Width = 764
+        Anchors = [akTop, akLeft, akRight]
+        TabOrder = 0
+        Text = 'edtRepoDir'
+      end
+      object btnSelFileRepo: TButton
+        Left = 16
+        Height = 25
+        Top = 74
+        Width = 114
+        Caption = 'Sel File Repo'
+        OnClick = btnSelFileRepoClick
+        TabOrder = 1
+      end
+    end
+  end
+  object theToolBar: TToolBar
+    Left = 0
+    Height = 24
+    Top = 0
+    Width = 328
+    Align = alNone
+    Caption = 'theToolBar'
+    Color = clNavy
+    ParentColor = False
+    TabOrder = 2
+    object Panel1: TPanel
+      Left = 1
+      Height = 22
+      Top = 2
+      Width = 54
+      BevelOuter = bvNone
+      Caption = 'Items:'
+      Color = clNavy
+      Font.Color = clWhite
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 0
+    end
+    object dbTxtPnlSelectedRec: TDBText
+      Left = 55
+      Height = 15
+      Top = 2
+      Width = 161
+      Color = clNavy
+      DataField = 'stng_Nm'
+      DataSource = dsItems
+      Font.Color = clWhite
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+  end
+  object chckBxShowNotes: TCheckBox
+    Left = 456
+    Height = 23
+    Top = 26
+    Width = 101
+    Caption = 'Show notes'
+    OnChange = chckBxShowNotesChange
+    TabOrder = 3
+  end
+  object dsNtnGenres: TDataSource
+    left = 213
+    top = 194
+  end
+  object dsItems: TDataSource
+    DataSet = DatModMain.SQLQrySettings
+    OnDataChange = dsItemsDataChange
+    left = 469
+    top = 295
+  end
+  object opnDlgDocFilePath: TOpenDialog
+    left = 255
+    top = 271
+  end
+  object VDFormPosSize1: TVDFormPosSize
+    left = 114
+    top = 270
+  end
+  object theSelDirDialog: TSelectDirectoryDialog
+    left = 400
+    top = 184
+  end
+end

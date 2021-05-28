@@ -1,0 +1,173 @@
+object frmDataBase: TfrmDataBase
+  Left = 569
+  Height = 459
+  Top = 271
+  Width = 830
+  Caption = 'DataBase managen'
+  ClientHeight = 459
+  ClientWidth = 830
+  OnShow = FormShow
+  LCLVersion = '2.0.8.0'
+  object theStatusBar: TStatusBar
+    Left = 0
+    Height = 18
+    Top = 441
+    Width = 830
+    Panels = <>
+  end
+  object pgCtrlDataBases: TPageControl
+    Left = 0
+    Height = 441
+    Top = 0
+    Width = 830
+    ActivePage = tbshtBackUp
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 1
+    object tbshtBackUp: TTabSheet
+      Caption = 'BackUp'
+      ClientHeight = 410
+      ClientWidth = 820
+      object lblLaatsteBackup: TLabel
+        Left = 16
+        Height = 15
+        Top = 248
+        Width = 103
+        Caption = 'Laatste Backup:'
+        ParentColor = False
+        WordWrap = True
+      end
+      object edtDataBaseLokatie: TEdit
+        Left = 12
+        Height = 33
+        Top = 36
+        Width = 764
+        Anchors = [akTop, akLeft, akRight]
+        TabOrder = 0
+        Text = 'edtDataBaseLokatie'
+      end
+      object lblDataBaseLocatie: TLabel
+        Left = 13
+        Height = 15
+        Top = 16
+        Width = 119
+        Caption = 'Actieve Database:'
+        ParentColor = False
+      end
+      object btnSelDb: TButton
+        Left = 13
+        Height = 25
+        Hint = 'Selecteer de database waarmee het programma werkt'
+        Top = 68
+        Width = 114
+        Caption = 'Sel Database'
+        OnClick = btnSelDbClick
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 1
+      end
+      object lblBackupRepo: TLabel
+        Left = 13
+        Height = 15
+        Top = 126
+        Width = 114
+        Caption = 'Backup Directory:'
+        ParentColor = False
+      end
+      object edtDataBaseBackupDir: TEdit
+        Left = 13
+        Height = 33
+        Top = 148
+        Width = 764
+        Anchors = [akTop, akLeft, akRight]
+        TabOrder = 2
+        Text = 'edtDataBaseBackupDir'
+      end
+      object btnSelDbBackupRepo: TButton
+        Left = 13
+        Height = 25
+        Top = 184
+        Width = 114
+        Caption = 'Sel BkUp Repo'
+        OnClick = btnSelDbBackupRepoClick
+        TabOrder = 3
+      end
+      object btnBackupDb: TButton
+        Left = 13
+        Height = 25
+        Top = 216
+        Width = 114
+        Caption = 'Db Backupen'
+        OnClick = btnBackupDbClick
+        TabOrder = 4
+      end
+      object lblLtstBckupPath: TLabel
+        Left = 16
+        Height = 32
+        Top = 268
+        Width = 794
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Caption = '- - -'
+        ParentColor = False
+        WordWrap = True
+      end
+      object Button1: TButton
+        Left = 144
+        Height = 25
+        Top = 216
+        Width = 88
+        Caption = 'Backup loc'
+        OnClick = Button1Click
+        TabOrder = 5
+      end
+      object btnLtstBuTerugZtn: TButton
+        Left = 13
+        Height = 25
+        Top = 321
+        Width = 164
+        Caption = 'Laatste Bu terugzetten'
+        OnClick = btnLtstBuTerugZtnClick
+        TabOrder = 6
+      end
+      object btnOpenDbLoc: TButton
+        Left = 144
+        Height = 25
+        Hint = 'Open de map waar zich de actieve database bevind'
+        Top = 68
+        Width = 88
+        Caption = 'Open loc'
+        OnClick = btnOpenDbLocClick
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 7
+      end
+    end
+    object tbshtOpschonen: TTabSheet
+      Caption = 'Opschonen'
+      ClientHeight = 410
+      ClientWidth = 820
+      object btnIntegrityCheck: TButton
+        Left = 36
+        Height = 25
+        Top = 32
+        Width = 155
+        Caption = 'Integriteit nalopen'
+        OnClick = btnIntegrityCheckClick
+        TabOrder = 0
+      end
+    end
+  end
+  object theOpenDlg: TOpenDialog
+    left = 512
+    top = 72
+  end
+  object VDFormPosSize1: TVDFormPosSize
+    left = 280
+    top = 84
+  end
+  object theSelDirDialog: TSelectDirectoryDialog
+    left = 384
+    top = 80
+  end
+end
